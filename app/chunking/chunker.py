@@ -2,7 +2,7 @@ from schemas import Document, Chunk
 
 def chunk_document( document: Document, chunk_size: int = 200, ) -> Document:
     chunks = []
-    for start in range(0, len(document/text), chunk_size):
+    for start in range(0, len(document.text), chunk_size):
         chunk_text = document.text[start:start + chunk_size]
         chunk = Chunk(
             document_id=document.document_id,
