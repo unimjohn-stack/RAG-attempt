@@ -1,0 +1,23 @@
+TCP/IP Networking Fundamentals
+
+The Transmission Control Protocol (TCP) provides reliable,
+connection-oriented communication between applications.
+
+TCP uses a three-way handshake to establish a connection.
+The handshake consists of SYN, SYN-ACK, and ACK messages.
+
+The Internet Protocol (IP) is responsible for addressing and
+routing packets between networks.
+
+IPv4 addresses are 32-bit addresses normally represented in
+dotted-decimal notation.
+
+DNS translates human-readable domain names into IP addresses.
+
+DHCP allows devices on a network to automatically obtain
+network configuration information such as an IP address,
+subnet mask, default gateway, and DNS server.
+
+A router forwards packets between different networks.
+A switch normally forwards Ethernet frames within a local
+network based on MAC addresses.
