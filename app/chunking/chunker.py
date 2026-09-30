@@ -1,18 +1,16 @@
 from schemas import Document, Chunk
+from app.chunking.strategies import fixed_size_chunks
 
-def chunk_document( document: Document, chunk_size: int = 200, overlap: int = 0 ) -> Document:
-    if overlap >= chunk_size:
-        raise ValueError("overlap must be smaller than chunk_size")
-    
+def chunk_document( document: Document, chunk_size: int = 200, overlap: int = 0 ) -> list[Chunk]:
+    text_chunks = fixed_size_chunks( document.text, chunk_size=chunk_size, overlap=overlap)
     chunks = []
     start = 0
-    while start < len(document.text):
-        chunk_text = document.text[start:start + chunk_size]
+    for index, text in enumerate(text_chunks):
         chunk = Chunk(
             document_id=document.document_id,
             source=document.source,
             chunk_id=f"{document.document_id}_chunk_{len(chunks)}",
-            text=chunk_text,
+            text=text,
             metadata=document.metadata,
         )
         chunks.append(chunk)
