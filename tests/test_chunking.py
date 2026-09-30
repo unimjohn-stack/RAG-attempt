@@ -1,6 +1,6 @@
 import pytest
 
-from app.chunking.strategies import fixed_size_chunks
+from app.chunking.strategies import (fixed_size_chunks, sentence_aware_chunks,)
 
 
 def test_fixed_size_chunking():
@@ -51,3 +51,21 @@ def test_chunk_size_must_be_positive():
             "hello world",
             chunk_size=0,
         )
+
+def test_sentence_aware_chunking():
+    text = (
+        "TCP provides reliable communication. "
+        "DNS translates domain names. "
+        "DHCP provides network configuration."
+    )
+
+    chunks = sentence_aware_chunks(
+        text,
+        chunk_size=60,
+    )
+
+    assert chunks == [
+        "TCP provides reliable communication.",
+        "DNS translates domain names.",
+        "DHCP provides network configuration.",
+    ]
