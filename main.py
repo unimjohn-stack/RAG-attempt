@@ -8,7 +8,7 @@ def main():
     print("Source:", document.source)
     print("Metadata", document.metadata)
     print("\nCreating chunks...\n")
-    chunks = chunk_document(document, chunk_size=200)
+    chunks = chunk_document(document, chunk_size=200, overlap=50,)
     print(f"Total chunks: {len(chunks)}")
     for chunk in chunks:
         print("\n" + "-" * 60)
