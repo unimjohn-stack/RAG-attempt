@@ -7,10 +7,10 @@ def fixed_size_chunks(text: str, chunk_size: int = 200, overlap: int = 0) -> lis
         raise ValueError("overlap must be smaller than chunk_size")
 
     chunks = []
+    step = chunk_size - overlap
     start = 0
     while start < len(text):
         chunk = text[start: start + chunk_size]
         chunks.append(chunk)
-        start += chunk_size - overlap
-        start += chunk_size - overlap
+        start += step
     return chunks
